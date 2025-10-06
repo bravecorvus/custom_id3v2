@@ -21,10 +21,10 @@ const (
 	frontCoverPath = "testdata/front_cover.jpg"
 	backCoverPath  = "testdata/back_cover.jpg"
 
-	framesSize    = 212001
+	framesSize    = 212026
 	tagSize       = tagHeaderSize + framesSize
 	musicSize     = 3840834
-	countOfFrames = 16
+	countOfFrames = 17
 )
 
 var (
@@ -112,6 +112,7 @@ func resetMP3Tag() error {
 	tag.SetTitle("Title")
 	tag.SetArtist("Artist")
 	tag.SetAlbumArtist("AlbumArtist")
+	tag.SetTrackPosition("TrackPosition")
 	tag.SetAlbum("Album")
 	tag.SetYear("2016")
 	tag.SetGenre("Genre")
@@ -156,8 +157,8 @@ func TestCountLenSize(t *testing.T) {
 	}
 
 	// Check len of tag.AllFrames().
-	if len(tag.AllFrames()) != 13 {
-		t.Errorf("Expected: %v, got: %v", 11, len(tag.AllFrames()))
+	if len(tag.AllFrames()) != 14 {
+		t.Errorf("Expected: %v, got: %v", 14, len(tag.AllFrames()))
 	}
 
 	// Check saved tag size by reading the 6:10 bytes of mp3 file.

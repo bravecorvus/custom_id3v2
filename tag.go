@@ -238,12 +238,20 @@ func (tag *Tag) AlbumArtist() string {
 	return tag.GetTextFrame(tag.CommonID("Band/Orchestra/Accompaniment")).Text
 }
 
+func (tag *Tag) TrackPosition() string {
+	return tag.GetTextFrame(tag.CommonID("Track number/Position in set")).Text
+}
+
 func (tag *Tag) SetArtist(artist string) {
 	tag.AddTextFrame(tag.CommonID("Artist"), tag.DefaultEncoding(), artist)
 }
 
 func (tag *Tag) SetAlbumArtist(albumArtist string) {
 	tag.AddTextFrame(tag.CommonID("Band/Orchestra/Accompaniment"), tag.DefaultEncoding(), albumArtist)
+}
+
+func (tag *Tag) SetTrackPosition(number string) {
+	tag.AddTextFrame(tag.CommonID("Track number/Position in set"), tag.DefaultEncoding(), number)
 }
 
 func (tag *Tag) Album() string {
